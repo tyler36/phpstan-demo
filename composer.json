@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "phpstan": "vendor/bin/phpstan"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10"
+    }
+}
