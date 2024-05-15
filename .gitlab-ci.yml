@@ -23,18 +23,5 @@ phpstan:
   image:
     name: ghcr.io/phpstan/phpstan
     entrypoint: ['']
-  needs:
-    - composer
-  interruptible: true
   script: |
-    set +euo pipefail  # don't abort if any following command fails
-    vendor/bin/phpstan analyse --memory-limit=4G --error-format=gitlab > logs/phpstan.json
-    vendor/bin/phpstan analyse --memory-limit=4G --error-format=junit > logs/phpstan-junit.xml
-  artifacts:
-    when: always
-    paths:
-      - logs/phpstan-junit.xml
-      - logs/phpstan.json
-    reports:
-      junit: logs/phpstan-junit.xml
-      codequality: logs/phpstan.json
+    vendor/bin/phpstan analyse --configuration=phpstan.dist.neon --memory-limit=4G
