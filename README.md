@@ -8,6 +8,7 @@
   - [Ignoring in configuration file](#ignoring-in-configuration-file)
   - [Reporting unused ignores](#reporting-unused-ignores)
   - [Exclude entire file/paths](#exclude-entire-filepaths)
+- [VScode](#vscode)
 - [Extending](#extending)
 
 ## Overview
@@ -148,6 +149,18 @@ includes:
 
 parameters:
 # your usual configuration options
+```
+
+## VScode
+
+Homepage: [SanderRonde.phpstan-vscode](https://marketplace.visualstudio.com/items?itemName=SanderRonde.phpstan-vscode)
+
+```json
+{
+  "phpstan.enabled": true,
+  "phpstan.enableStatusBar": false,
+  "phpstan.suppressTimeoutMessage": true,
+}
 ```
 
 ## Extending
