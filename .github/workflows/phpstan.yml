@@ -16,6 +16,8 @@ jobs:
     steps:
       - name: "☁️ checkout repository"
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
       - name: "🧹 Run PHPStan Static Analysis"
         uses: docker://oskarstark/phpstan-ga:latest
