@@ -1,4 +1,4 @@
-name: PHPStan
+name: linting
 
 on:
   workflow_dispatch:
@@ -7,6 +7,14 @@ on:
   pull_request:
     branches: [main]
 
+permissions: {
+  contents: read
+}
+
+concurrency:
+  group: ${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
   phpstan:
     name: "🧹 PHPSTAN"
@@ -14,8 +22,10 @@ jobs:
     steps:
       - name: "☁️ checkout repository"
         uses: actions/checkout@v2
+        with:
+          persist-credentials: false
 
       - name: "🧹 Run PHPStan Static Analysis"
-        uses: docker://oskarstark/phpstan-ga
+        uses: docker://oskarstark/phpstan-ga:latest
         env:
           REQUIRE_DEV: true
